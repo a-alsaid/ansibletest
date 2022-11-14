@@ -7,7 +7,5 @@
       register: podtest
     - command: "export podStatus=not"
       when: '"error" in podtest.stdout'
-    - command: "export podStatus=ready"
-      when: '"error" not in podtest.stdout'
 
     
