@@ -5,8 +5,11 @@
     - name: check pod
       command: "kubectl wait --for=condition=ready pod -l app=podname --timeout=2s -n dev"
       register: podtest
-    - command: 'export podStatus=ready'
-    - command: "export podStatus=not"
-      when: '"error" in podtest.stdout'
+    - name: Echo my_env_var
+      shell: "echo $MY_ENV_VARIABLE"
+      environment:
+        MY_ENV_VARIABLE: podtest.stdout
+      when: '"error" in $MY_ENV_VARIABLE'
+
 
     
