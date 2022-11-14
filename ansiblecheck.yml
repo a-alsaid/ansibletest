@@ -5,5 +5,3 @@
     - name: check pod
       command: "kubectl wait --for=condition=ready pod -l app=podname --timeout=2s -n uat"
       register: podtest
-
-    - debug: msg="{{ podtest.stdout }}"
