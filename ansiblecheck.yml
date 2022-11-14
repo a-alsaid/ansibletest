@@ -13,8 +13,7 @@
         msg: |
             ### StatusUpdate ###
             --------------------------------------
-            ``
-            `Server`: TEST
+            `Service`: podname
             `Status`: Ansible File Watcher Job failed
             --------------------------------------
         channel: 'Rachid Zaiter'
@@ -25,16 +24,15 @@
       when: "{{ 'error' in podtest.stdout}}"
       ignore_errors: true
 
-    - name: notify Slack that the job is failing
+    - name: notify Slack that the job is success
       tags: slack
       community.general.slack:
         token: T788GD9SS/B04ASBJ2MV1/6V1VYcT7uBMXBPYS4e7JtQaL
         msg: |
             ### StatusUpdate ###
             --------------------------------------
-            ``
-            `Server`: TEST
-            `Status`: Ansible File Watcher Job failed
+            `Service`: podname
+            `Status`: Ansible File Watcher Job Success
             --------------------------------------
         channel: 'Rachid Zaiter'
         color: good
