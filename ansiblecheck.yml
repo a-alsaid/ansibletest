@@ -6,7 +6,7 @@
       command: "kubectl wait --for=condition=ready pod -l app=podname --timeout=2s -n dev"
       register: podtest
     - name: Echo my_env_var
-      command: "export podStatus=$MY_ENV_VARIABLE"
+      shell: "export podStatus=$MY_ENV_VARIABLE"
       environment:
         MY_ENV_VARIABLE: podtest.stdout
 
