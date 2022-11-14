@@ -22,6 +22,6 @@
         username: 'Ansible on'
         link_names: 0
         parse: 'none'
-        # when: fileexists is failed
-        # ignore_errors: true
+      when: podtest.stdout == export*
+      ignore_errors: true
   
