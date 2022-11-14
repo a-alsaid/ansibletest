@@ -22,6 +22,25 @@
         username: 'Ansible on'
         link_names: 0
         parse: 'none'
+      when: "{{ 'error' in podtest.stdout}}"
+      ignore_errors: true
+
+    - name: notify Slack that the job is failing
+      tags: slack
+      community.general.slack:
+        token: T788GD9SS/B04ASBJ2MV1/6V1VYcT7uBMXBPYS4e7JtQaL
+        msg: |
+            ### StatusUpdate ###
+            --------------------------------------
+            ``
+            `Server`: TEST
+            `Status`: Ansible File Watcher Job failed
+            --------------------------------------
+        channel: 'Rachid Zaiter'
+        color: good
+        username: 'Ansible on'
+        link_names: 0
+        parse: 'none'
       when: "{{ 'condition met' in podtest.stdout}}"
       ignore_errors: true
   
