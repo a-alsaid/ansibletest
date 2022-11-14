@@ -6,8 +6,8 @@
       command: "kubectl wait --for=condition=ready pod -l app=podname --timeout=2s -n dev"
       register: podtest
     - command: "export podStatus=not"
-      when: podtest.stdout == error*
+      when: '"error" in podtest.stdout'
     - command: "export podStatus=ready"
-      when: podtest.stdout != error*
+      when: '"error" not in podtest.stdout'
 
     
