@@ -3,7 +3,7 @@
   hosts: 'all'
   tasks:
     - name: check pod
-      command: "kubectl wait --for=condition=ready pod -l app=podname --timeout=2s -n dev"
+      shell: "kubectl wait --for=condition=ready pod -l app=podname --timeout=2s -n dev"
       register: podtest
 
     - name: notify Slack that the job is failing
