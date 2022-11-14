@@ -22,6 +22,6 @@
         username: 'Ansible on'
         link_names: 0
         parse: 'none'
-      when: podtest.stdout == export*
+      when: podtest.stdout | search("error")
       ignore_errors: true
   
